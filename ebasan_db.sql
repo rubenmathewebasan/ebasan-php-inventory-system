@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Dec 03, 2025 at 09:02 AM
+-- Generation Time: Dec 05, 2025 at 04:59 AM
 -- Server version: 10.4.32-MariaDB
 -- PHP Version: 8.2.12
 
@@ -38,7 +38,7 @@ CREATE TABLE `categories` (
 
 INSERT INTO `categories` (`id`, `name`) VALUES
 (5, 'Motherboard'),
-(6, 'nigga');
+(7, 'cpu ');
 
 -- --------------------------------------------------------
 
@@ -58,9 +58,11 @@ CREATE TABLE `customers` (
 --
 
 INSERT INTO `customers` (`id`, `name`, `email`, `phone`) VALUES
-(1, 'John Doe', 'john@example.com', '09171234567'),
-(2, 'Jane Smith', 'jane@example.com', '09221234567'),
-(3, 'Alice Johnson', 'alice@example.com', '09331234567');
+(1, 'angelo fabricants', 'angelo@gmail.com', '09171234567'),
+(2, 'Albhend bacals', 'bacalso@gmail.com', '09221234567'),
+(3, 'ruben', 'ebasan@gmail.com', '09331234567'),
+(4, 'semblante', 'semblante@gmail.com', '143'),
+(5, 'ryan e balisi', 'balisi@gmail.com', '143');
 
 -- --------------------------------------------------------
 
@@ -80,7 +82,12 @@ CREATE TABLE `orders` (
 
 INSERT INTO `orders` (`id`, `customer_id`, `order_date`) VALUES
 (1, 1, '2025-12-01 10:00:00'),
-(2, 2, '2025-12-02 14:30:00');
+(2, 2, '2025-12-02 14:30:00'),
+(3, 4, '2025-12-05 11:51:53'),
+(4, 1, '2025-12-05 11:53:39'),
+(5, 1, '2025-12-05 11:53:50'),
+(6, 1, '2025-12-05 11:54:03'),
+(7, 4, '2025-12-05 11:54:18');
 
 -- --------------------------------------------------------
 
@@ -96,6 +103,21 @@ CREATE TABLE `order_items` (
   `price` decimal(10,2) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
+--
+-- Dumping data for table `order_items`
+--
+
+INSERT INTO `order_items` (`id`, `order_id`, `product_id`, `quantity`, `price`) VALUES
+(5, 3, 10, 1, 190.00),
+(6, 3, 37, 1, 17000.00),
+(7, 4, 37, 1, 17000.00),
+(8, 5, 10, 1, 190.00),
+(9, 5, 37, 1, 17000.00),
+(10, 6, 10, 1, 190.00),
+(11, 6, 37, 1, 17000.00),
+(12, 7, 10, 1, 190.00),
+(13, 7, 38, 1, 17999.00);
+
 -- --------------------------------------------------------
 
 --
@@ -106,17 +128,20 @@ CREATE TABLE `products` (
   `id` int(11) NOT NULL,
   `name` varchar(100) NOT NULL,
   `price` decimal(10,2) NOT NULL,
-  `category_id` int(11) NOT NULL
+  `category_id` int(11) NOT NULL,
+  `Stock` int(11) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
 -- Dumping data for table `products`
 --
 
-INSERT INTO `products` (`id`, `name`, `price`, `category_id`) VALUES
-(10, 'Gigabyte Motherboard', 190.00, 5),
-(25, 'nigga', 2.00, 5),
-(36, 'eawes', 23.00, 5);
+INSERT INTO `products` (`id`, `name`, `price`, `category_id`, `Stock`) VALUES
+(10, 'Gigabyte', 190.00, 7, 4),
+(37, 'AMD ryzen 5', 17000.00, 5, 5),
+(38, 'AMD ryzen 7', 17999.00, 7, 5),
+(39, 'q', 2.00, 5, 5),
+(42, 'amd', 150.00, 7, 5);
 
 --
 -- Indexes for dumped tables
@@ -164,31 +189,31 @@ ALTER TABLE `products`
 -- AUTO_INCREMENT for table `categories`
 --
 ALTER TABLE `categories`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
 
 --
 -- AUTO_INCREMENT for table `customers`
 --
 ALTER TABLE `customers`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
 
 --
 -- AUTO_INCREMENT for table `orders`
 --
 ALTER TABLE `orders`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
 
 --
 -- AUTO_INCREMENT for table `order_items`
 --
 ALTER TABLE `order_items`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=14;
 
 --
 -- AUTO_INCREMENT for table `products`
 --
 ALTER TABLE `products`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=37;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=44;
 
 --
 -- Constraints for dumped tables
